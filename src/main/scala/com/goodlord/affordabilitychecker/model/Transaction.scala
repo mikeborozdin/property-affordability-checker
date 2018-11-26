@@ -8,7 +8,7 @@ object TransactionType extends Enumeration {
 
 case class Transaction (
                          date: LocalDate,
-                         transactionType: TransactionType.Value,
+                         transactionType: String,
                          details: String,
                          amount: BigDecimal
                        )
