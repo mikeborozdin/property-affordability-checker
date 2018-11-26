@@ -2,14 +2,26 @@ package com.goodlord.affordabilitycheck.app
 
 import com.goodlord.com.goodlord.affordabilitychecker.service._
 
+import scala.io.{BufferedSource, Source}
+
 object Main extends App {
 
-  val transactions = new TransactionsReader().get("bank_statement.csv")
+  val (transactionFile, propertyFile, incomeMultiplier) = if (args.length == 3) getParamsFromCmd(args) else getDefaultParams()
+
+  val transactions = new TransactionsReader().get(transactionFile)
   val monthlyNetIncome = new IncomeAnalyser(new DefaultTransactionAnalyser()).getMonthlyNetIncome(transactions)
 
-  val allProperties = new PropertiesReader().get("properties.csv")
+  val allProperties = new PropertiesReader().get(propertyFile)
 
-  val affordableProperties = new AffordablePropertyFinder().find(monthlyNetIncome, allProperties)
+  val affordableProperties = new AffordablePropertyFinder(incomeMultiplier).find(monthlyNetIncome, allProperties)
 
-  println(affordableProperties)
+  affordableProperties.foreach(println _)
+
+  private def getDefaultParams(): (BufferedSource, BufferedSource, BigDecimal) = {
+    return (Source.fromResource("bank_statement.csv"), Source.fromResource("properties.csv"), IncomeMultiplier.Default)
+  }
+
+  private def getParamsFromCmd(args: Array[String]): (BufferedSource, BufferedSource, BigDecimal) = {
+    return (Source.fromFile(args(0)), Source.fromFile(args(1)), BigDecimal(args(2)))
+  }
 }

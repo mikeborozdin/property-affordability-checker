@@ -7,12 +7,12 @@ import com.goodlord.affordabilitychecker.model.Transaction
 import kantan.csv._
 import kantan.csv.ops._
 
-import scala.io.Source
+import scala.io.BufferedSource
 
 class TransactionsReader {
 
-  def get(csvFileName: String): List[Transaction] = {
-    val fileContents = Source.fromResource(csvFileName).getLines.mkString(System.lineSeparator())
+  def get(csvFile: BufferedSource): List[Transaction] = {
+    val fileContents = csvFile.getLines.mkString(System.lineSeparator())
 
     val transactionsCsv = getTransactionCsv(fileContents)
 
