@@ -18,7 +18,7 @@ However, you can easily pass your own parameters through the command line.
 sbt run "[bank-statement path] [properties path] [income multiplier]" 
 ```
 
-e.g.
+e.g.:
 
 ```
 sbt run "my-bank-statement.csv my-properties.csv 1.5" 
@@ -37,8 +37,12 @@ The app makes the following assumptions
     is interpreted as that net income should be 2.25 times higher than rent
 * What is a net income from the previous statement?
 * * It's a monthly recurring income minus monthly recurring expenses
-* How do we find recurring income and expenses?
-* * First, we identify all recurring transactions
-* * We do that by going through all transactions
-* * And if a transaction is present in all the months, then it's a recurring transaction
-* *  
+
+How do we find recurring income and expenses?
+----
+* The key is to find all recurring transactions
+* We assume that a transaction is recurring if it appears in every month
+* And its payment type (e.g., 'Bank Credit'), details ('Salary') and amount (£1,000) are the same in every month
+* Also, we don't include current rent payments in the calculations of a montly net income. Indeed, if someone is applying for a rent, 
+it doesn't make sense to include the current one. We assume that rent transactions always have 'Letting Service' in the `details` field
+* In theory, we could've excluded utility payments, as well, as their amount may vary by property
