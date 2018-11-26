@@ -29,12 +29,11 @@ if you pass all 3 arguments.
 
 Assumptions
 ====
-The app makes the following assumptions
+The app makes the following assumptions:
 
-*  'A tenant is able to afford a property 
-    if their monthly recurring income exceeds their monthly 
-    recurring expenses by the total of the monthly rent times 125%.'
-    is interpreted as that net income should be 2.25 times higher than rent
+* A net monthly income should be at least 2.25 times higher than a monthly rent.
+    * That's an interpretations of the following requirement:  
+    ** *'A tenant is able to afford a property if their monthly recurring income exceeds their monthly recurring expenses by the total of the monthly rent times 125%.'*
 * What is a net income from the previous statement?
 * * It's a monthly recurring income minus monthly recurring expenses
 
