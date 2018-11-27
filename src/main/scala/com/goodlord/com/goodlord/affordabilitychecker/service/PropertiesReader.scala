@@ -8,7 +8,7 @@ import scala.io.BufferedSource
 
 class PropertiesReader {
 
-  def get(csvFile: BufferedSource): List[Property] = {
+  def get(csvFile: BufferedSource): Iterable[Property] = {
     implicit val propertyDecoder: HeaderDecoder[Property] =
       HeaderDecoder.decoder("Id", "Address", "Price (pcm)")(Property.apply _)
 

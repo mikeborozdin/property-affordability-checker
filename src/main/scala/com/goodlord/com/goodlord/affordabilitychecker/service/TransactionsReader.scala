@@ -11,7 +11,7 @@ import scala.io.BufferedSource
 
 class TransactionsReader {
 
-  def get(csvFile: BufferedSource): List[Transaction] = {
+  def get(csvFile: BufferedSource): Iterable[Transaction] = {
     val fileContents = csvFile.getLines.mkString(System.lineSeparator())
 
     val transactionsCsv = getTransactionCsv(fileContents)
@@ -28,7 +28,7 @@ class TransactionsReader {
     return transactionsCsv
   }
 
-  private def parseCsv(csvContents: String): List[Transaction] = {
+  private def parseCsv(csvContents: String): Iterable[Transaction] = {
     implicit val dateDecoder: CellDecoder[LocalDate] = {
       CellDecoder.from(s => DecodeResult(LocalDate.parse(s, getDateFormatter())))
     }

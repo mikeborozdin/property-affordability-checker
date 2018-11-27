@@ -19,10 +19,8 @@ class DefaultTransactionAnalyser extends TransactionAnalyser {
 
       val transactionWithNoDate = Transaction(null, transaction.transactionType, transaction.details, transaction.amount)
 
-      if (transactionOccurrences.contains(transactionWithNoDate)) {
-        if (!transactionOccurrences(transactionWithNoDate).contains(transactionMonth)) {
+      if (transactionOccurrences.contains(transactionWithNoDate) && !transactionOccurrences(transactionWithNoDate).contains(transactionMonth)) {
           transactionOccurrences(transactionWithNoDate) += transactionMonth
-        }
       } else {
         transactionOccurrences(transactionWithNoDate) = mutable.Set(transactionMonth)
       }
