@@ -33,7 +33,7 @@ The app makes the following assumptions:
 
 * A net monthly income should be at least 2.25 times higher than a monthly rent.
     * That's an interpretations of the following requirement:  
-    ** *'A tenant is able to afford a property if their monthly recurring income exceeds their monthly recurring expenses by the total of the monthly rent times 125%.'*
+    * *'A tenant is able to afford a property if their monthly recurring income exceeds their monthly recurring expenses by the total of the monthly rent times 125%.'*
 * What is a net income from the previous statement?
 * * It's a monthly recurring income minus monthly recurring expenses
 
