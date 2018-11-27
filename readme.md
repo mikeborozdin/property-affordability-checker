@@ -1,3 +1,11 @@
+Technical Stack
+====
+* Scala 2.x
+* sbt 1.x
+* kantan.csv 0.5.x
+* scalatest 3.x
+* scalamock 4.x
+
 Running Project
 ====
 You can run the project using `sbt`
@@ -5,6 +13,14 @@ You can run the project using `sbt`
 ```
 sbt compile
 sbt run
+```
+
+Running Tests
+====
+You can also execute all unit tests with `sbt':
+
+```
+sbt test
 ```
 
 Inputs
