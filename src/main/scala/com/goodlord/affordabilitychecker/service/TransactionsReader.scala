@@ -1,9 +1,9 @@
-package com.goodlord.com.goodlord.affordabilitychecker.service
+package com.goodlord.affordabilitychecker.service
 
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 import com.goodlord.affordabilitychecker.model.Transaction
+import com.goodlord.affordabilitychecker.util.CsvUtil
 import kantan.csv._
 import kantan.csv.ops._
 
@@ -30,7 +30,7 @@ class TransactionsReader {
 
   private def parseCsv(csvContents: String): Iterable[Transaction] = {
     implicit val dateDecoder: CellDecoder[LocalDate] = {
-      CellDecoder.from(s => DecodeResult(LocalDate.parse(s, getDateFormatter())))
+      CellDecoder.from(s => DecodeResult(LocalDate.parse(s, CsvUtil.getDateFormatter())))
     }
 
     implicit val transactionDecoder: RowDecoder[Transaction] = RowDecoder.ordered {
@@ -41,22 +41,12 @@ class TransactionsReader {
         moneyOutString: String,
         moneyInString: String) =>
       {
-        val amount = parseMoney(moneyInString) - parseMoney(moneyOutString)
+        val amount = CsvUtil.parseMoney(moneyInString) - CsvUtil.parseMoney(moneyOutString)
 
         Transaction(date, transactionType, details, amount)
       }
     }
 
     return csvContents.unsafeReadCsv[List, Transaction](rfc.withoutHeader)
-  }
-
-  private def getDateFormatter():DateTimeFormatter = DateTimeFormatter.ofPattern("d['st']['nd']['rd']['th'] MMMM y")
-
-  private def parseMoney(moneyString: String): BigDecimal = {
-    return if (moneyString.length > 0) BigDecimal(removeNumberFormatting(moneyString)) else BigDecimal(0)
-  }
-
-  private def removeNumberFormatting(s:String): String = {
-    return s.replaceAll("£", "").replaceAll(",", "")
   }
 }

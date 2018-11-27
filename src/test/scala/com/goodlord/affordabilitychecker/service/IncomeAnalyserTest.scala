@@ -1,7 +1,6 @@
-package com.goodlord.affordabilitycheck.service
+package com.goodlord.affordabilitychecker.service
 
 import com.goodlord.affordabilitychecker.model.Transaction
-import com.goodlord.com.goodlord.affordabilitychecker.service.{IncomeAnalyser, TransactionAnalyser}
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.FunSuite
 

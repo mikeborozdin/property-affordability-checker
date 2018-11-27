@@ -1,6 +1,6 @@
-package com.goodlord.affordabilitycheck.app
+package com.goodlord.affordabilitychecker.app
 
-import com.goodlord.com.goodlord.affordabilitychecker.service._
+import com.goodlord.affordabilitychecker.service._
 
 import scala.io.{BufferedSource, Source}
 

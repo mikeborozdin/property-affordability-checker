@@ -1,4 +1,4 @@
-package com.goodlord.com.goodlord.affordabilitychecker.service
+package com.goodlord.affordabilitychecker.service
 
 import java.time.Month
 

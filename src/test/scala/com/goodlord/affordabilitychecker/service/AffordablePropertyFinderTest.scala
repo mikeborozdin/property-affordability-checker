@@ -1,7 +1,6 @@
-package com.goodlord.affordabilitycheck.service
+package com.goodlord.affordabilitychecker.service
 
 import com.goodlord.affordabilitychecker.model.Property
-import com.goodlord.com.goodlord.affordabilitychecker.service.AffordablePropertyFinder
 import org.scalatest.FunSuite
 
 class AffordablePropertyFinderTest extends FunSuite {

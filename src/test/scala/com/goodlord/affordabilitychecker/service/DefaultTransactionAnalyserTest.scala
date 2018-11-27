@@ -1,9 +1,8 @@
-package com.goodlord.affordabilitycheck.service
+package com.goodlord.affordabilitychecker.service
 
 import java.time.LocalDate
 
 import com.goodlord.affordabilitychecker.model.Transaction
-import com.goodlord.com.goodlord.affordabilitychecker.service.DefaultTransactionAnalyser
 import org.scalatest.FunSuite
 
 class DefaultTransactionAnalyserTest extends FunSuite {
