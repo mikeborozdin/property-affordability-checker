@@ -1,6 +1,5 @@
 package com.goodlord.affordabilitychecker.app
 
-import com.goodlord.affordabilitychecker.app.Main.{affordableProperties, incomeMultiplier, monthlyNetIncome}
 import com.goodlord.affordabilitychecker.model.Property
 import com.goodlord.affordabilitychecker.service._
 
